@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kenna Rose Ymbol — Virtual Assistant</title>
+<meta name="description" content="Virtual assistant support for social media, email marketing, graphic design, admin, lead generation and LinkedIn optimization.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --wine:#6B1F2A;
+    --wine-deep:#4A1420;
+    --gold:#C9A227;
+    --gold-soft:#E8D9A8;
+    --cream:#FBF7EF;
+    --parchment:#F6EFE2;
+    --ink:#2B211D;
+    --ink-soft:#6B5F55;
+    --line:rgba(107,31,42,0.18);
+    --radius:2px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important;}
+  }
+  body{
+    margin:0;
+    background:var(--cream);
+    color:var(--ink);
+    font-family:'Work Sans', sans-serif;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,h4{
+    font-family:'Fraunces', serif;
+    color:var(--wine);
+    margin:0 0 0.4em;
+    font-weight:600;
+    letter-spacing:-0.01em;
+  }
+  a{color:var(--wine); text-decoration:none;}
+  a:focus-visible, button:focus-visible{
+    outline:2px solid var(--gold);
+    outline-offset:3px;
+  }
+  img{max-width:100%; display:block;}
+  .wrap{max-width:1080px; margin:0 auto; padding:0 28px;}
+  .eyebrow{
+    font-family:'Work Sans', sans-serif;
+    text-transform:uppercase;
+    letter-spacing:0.14em;
+    font-size:0.72rem;
+    font-weight:600;
+    color:var(--gold);
+  }
+  .rule{
+    height:1px;
+    background:linear-gradient(90deg, var(--wine) 0%, var(--gold) 45%, transparent 100%);
+    border:none;
+    margin:0;
+  }
+
+  /* ===== Masthead / Nav ===== */
+  header.masthead{
+    background:var(--wine);
+    color:var(--cream);
+    position:relative;
+  }
+  .status-bar{
+    background:var(--wine-deep);
+    font-size:0.78rem;
+    padding:8px 0;
+    color:var(--gold-soft);
+  }
+  .status-bar .wrap{display:flex; justify-content:space-between; flex-wrap:wrap; gap:6px;}
+  .status-bar .dot{
+    display:inline-block; width:7px; height:7px; border-radius:50%;
+    background:#7FBF7F; margin-right:6px; vertical-align:middle;
+  }
+  nav{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:18px 0;
+  }
+  .seal{
+    display:flex; align-items:center; gap:12px;
+    font-family:'Fraunces', serif;
+    font-size:1.05rem;
+    color:var(--cream);
+  }
+  .seal svg{flex-shrink:0;}
+  .navlinks{display:flex; gap:28px; list-style:none; margin:0; padding:0;}
+  .navlinks a{
+    color:var(--gold-soft);
+    font-size:0.85rem;
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+    font-weight:500;
+    transition:color 0.15s ease;
+  }
+  .navlinks a:hover{color:#fff;}
+  .navtoggle{display:none; background:none; border:1px solid var(--gold-soft); color:var(--gold-soft); padding:8px 10px; border-radius:var(--radius);}
+
+  .hero{
+    padding:64px 0 88px;
+    display:grid;
+    grid-template-columns:1.3fr 0.9fr;
+    gap:48px;
+    align-items:center;
+  }
+  .hero h1{
+    color:#fff;
+    font-size:clamp(2.1rem, 4vw, 3.1rem);
+    line-height:1.12;
+    font-weight:600;
+  }
+  .hero p.lede{
+    color:var(--gold-soft);
+    font-size:1.05rem;
+    max-width:46ch;
+    margin:18px 0 30px;
+  }
+  .cta-row{display:flex; gap:14px; flex-wrap:wrap;}
+  .btn{
+    display:inline-block;
+    padding:13px 26px;
+    font-size:0.85rem;
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+    font-weight:600;
+    border-radius:var(--radius);
+    transition:all 0.18s ease;
+    border:1px solid transparent;
+  }
+  .btn-gold{background:var(--gold); color:var(--wine-deep);}
+  .btn-gold:hover{background:#dfc05a;}
+  .btn-outline{border-color:var(--gold-soft); color:var(--gold-soft);}
+  .btn-outline:hover{border-color:#fff; color:#fff;}
+
+  .hero-card{
+    background:var(--parchment);
+    border:1px solid var(--gold);
+    border-radius:var(--radius);
+    padding:26px;
+    color:var(--ink);
+    position:relative;
+  }
+  .hero-card::before{
+    content:"";
+    position:absolute; inset:6px;
+    border:1px solid rgba(107,31,42,0.25);
+    pointer-events:none;
+  }
+  .hero-card .label{
+    font-size:0.7rem; text-transform:uppercase; letter-spacing:0.12em;
+    color:var(--wine); font-weight:600; margin-bottom:14px;
+  }
+  .hero-card ul{margin:0; padding:0; list-style:none;}
+  .hero-card li{
+    display:flex; justify-content:space-between;
+    padding:9px 0; border-bottom:1px dashed var(--line);
+    font-size:0.9rem;
+  }
+  .hero-card li:last-child{border-bottom:none;}
+  .hero-card li span:last-child{color:var(--ink-soft); font-family:'Fraunces',serif; font-style:italic;}
+
+  /* ===== Sections ===== */
+  section{padding:76px 0;}
+  .section-head{max-width:640px; margin-bottom:46px;}
+  .section-head h2{font-size:clamp(1.7rem, 2.6vw, 2.2rem);}
+  .section-head p{color:var(--ink-soft); margin:10px 0 0;}
+
+  /* Services as ledger cards */
+  .services-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(230px,1fr));
+    gap:1px;
+    background:var(--line);
+    border:1px solid var(--line);
+  }
+  .service{
+    background:var(--cream);
+    padding:30px 26px;
+  }
+  .service .num{
+    font-family:'Fraunces', serif;
+    font-style:italic;
+    color:var(--gold);
+    font-size:0.85rem;
+    display:block;
+    margin-bottom:10px;
+  }
+  .service h3{font-size:1.15rem; margin-bottom:8px;}
+  .service p{color:var(--ink-soft); font-size:0.92rem; margin:0;}
+
+  /* Work samples - ledger list */
+  .ledger{border-top:1px solid var(--line);}
+  .entry{
+    display:grid;
+    grid-template-columns:180px 1fr;
+    gap:28px;
+    padding:30px 0;
+    border-bottom:1px solid var(--line);
+    align-items:start;
+  }
+  .entry .thumb{
+    background:var(--parchment);
+    border:1px solid var(--line);
+    overflow:hidden;
+    aspect-ratio:4/3;
+  }
+  .entry .thumb img{width:100%; height:100%; object-fit:cover;}
+  .entry .meta{display:flex; align-items:baseline; gap:12px; margin-bottom:6px;}
+  .entry .idx{font-family:'Fraunces',serif; font-style:italic; color:var(--gold); font-size:0.85rem;}
+  .entry .tag{
+    font-size:0.68rem; text-transform:uppercase; letter-spacing:0.1em;
+    color:var(--wine); font-weight:600;
+    border:1px solid var(--wine); padding:2px 8px; border-radius:20px;
+  }
+  .entry h3{font-size:1.15rem; margin:0 0 8px;}
+  .entry p{color:var(--ink-soft); font-size:0.92rem; margin:0 0 12px;}
+  .entry a.view{font-size:0.85rem; font-weight:600; border-bottom:1px solid var(--gold);}
+
+  /* Process timeline */
+  .timeline{position:relative; padding-left:36px;}
+  .timeline::before{
+    content:""; position:absolute; left:9px; top:6px; bottom:6px; width:2px;
+    background:linear-gradient(var(--wine), var(--gold));
+  }
+  .step{position:relative; padding-bottom:38px;}
+  .step:last-child{padding-bottom:0;}
+  .step::before{
+    content:""; position:absolute; left:-36px; top:2px;
+    width:20px; height:20px; border-radius:50%;
+    background:var(--cream); border:2px solid var(--wine);
+  }
+  .step .step-label{font-size:0.72rem; text-transform:uppercase; letter-spacing:0.1em; color:var(--gold); font-weight:600;}
+  .step h4{font-size:1.1rem; margin:6px 0 6px;}
+  .step p{color:var(--ink-soft); margin:0; font-size:0.92rem; max-width:52ch;}
+
+  /* Contact */
+  .contact{
+    background:var(--wine);
+    color:var(--cream);
+  }
+  .contact .section-head p{color:var(--gold-soft);}
+  .contact-grid{
+    display:grid; grid-template-columns:1fr 1fr; gap:40px;
+  }
+  .contact-card{
+    background:rgba(0,0,0,0.15);
+    border:1px solid rgba(232,217,168,0.3);
+    padding:26px;
+    border-radius:var(--radius);
+  }
+  .contact-card .label{
+    font-size:0.7rem; text-transform:uppercase; letter-spacing:0.1em;
+    color:var(--gold); margin-bottom:6px; display:block;
+  }
+  .contact-card p, .contact-card a{color:var(--cream); font-size:0.98rem; margin:0 0 16px;}
+  .contact-card a{border-bottom:1px solid var(--gold); padding-bottom:1px;}
+
+  footer{
+    background:var(--wine-deep); color:var(--gold-soft);
+    text-align:center; padding:22px 0; font-size:0.8rem;
+  }
+
+  @media (max-width:820px){
+    .hero{grid-template-columns:1fr; padding-top:44px;}
+    .navlinks{
+      position:absolute; top:100%; left:0; right:0;
+      background:var(--wine-deep); flex-direction:column; gap:0;
+      display:none; padding:8px 0;
+    }
+    .navlinks.open{display:flex;}
+    .navlinks a{padding:12px 28px; display:block;}
+    .navtoggle{display:block;}
+    .entry{grid-template-columns:1fr;}
+    .entry .thumb{aspect-ratio:16/9;}
+    .contact-grid{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="status-bar">
+    <div class="wrap">
+      <span><span class="dot"></span>Accepting new clients</span>
+      <span>Based in Siquijor, Philippines · GMT+8</span>
+    </div>
+  </div>
+  <nav class="wrap">
+    <div class="seal">
+      <svg width="34" height="34" viewBox="0 0 34 34" aria-hidden="true">
+        <circle cx="17" cy="17" r="16" fill="var(--wine-deep)" stroke="var(--gold)" stroke-width="1.5"/>
+        <text x="17" y="22" text-anchor="middle" font-family="Fraunces, serif" font-size="13" fill="var(--gold)" font-style="italic">KY</text>
+      </svg>
+      kryeeVA
+    </div>
+    <ul class="navlinks" id="navlinks">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#work">Work</a></li>
+      <li><a href="#process">Process</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <button class="navtoggle" id="navtoggle" aria-expanded="false" aria-controls="navlinks">Menu</button>
+  </nav>
+
+  <div class="wrap hero">
+    <div>
+      <p class="eyebrow">Virtual Assistant — Operations Manifest</p>
+      <h1>I handle the day-to-day admin work — inbox, scheduling, systems — so you can focus on growing your business.</h1>
+      <p class="lede">Every task tracked. Every deadline kept. Every report clear.</p>
+      <div class="cta-row">
+        <a href="#work" class="btn btn-gold">View my work</a>
+        <a href="#contact" class="btn btn-outline">Get in touch</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <span class="label">On file</span>
+      <ul>
+        <li><span>Services offered</span><span>4</span></li>
+        <li><span>Reply time</span><span>&lt; 1 business day</span></li>
+        <li><span>Time zone</span><span>GMT+8</span></li>
+        <li><span>Status</span><span>Open</span></li>
+      </ul>
+    </div>
+  </div>
+</header>
+
+<hr class="rule">
+
+<!-- ===== Services ===== -->
+<section id="services">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">What I handle</p>
+      <h2>Services</h2>
+      <p>Four areas I work in most often. Happy to scope a custom package around what your business actually needs.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service">
+        <span class="num">No. 01</span>
+        <h3>Social Media Management</h3>
+        <p>Content calendars, scheduling, captions, and community replies across your platforms.</p>
+      </div>
+      <div class="service">
+        <span class="num">No. 02</span>
+        <h3>Graphic Design</h3>
+        <p>Social graphics, one-pagers, and simple brand assets — no agency overhead.</p>
+      </div>
+      <div class="service">
+        <span class="num">No. 03</span>
+        <h3>Administrative Support</h3>
+        <p>Inbox management, scheduling, data entry, and the day-to-day that keeps things moving.</p>
+      </div>
+      <div class="service">
+        <span class="num">No. 04</span>
+        <h3>Medical Virtual Assistant</h3>
+        <p>Appointment scheduling, patient intake, records support, and HIPAA-mindful admin for medical practices.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Work Samples ===== -->
+<section id="work" style="background:var(--parchment);">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Proof of work</p>
+      <h2>Work Samples</h2>
+      <p>A record of project sample tasks I handled in just a day for workflow references.</p>
+    </div>
+
+    <div class="ledger">
+      <div class="entry">
+        <div class="thumb"><img src="smm.png" alt="Social media management sample"></div>
+        <div>
+          <div class="meta"><span class="idx">Entry 01</span><span class="tag">Social</span></div>
+          <h3>Content Calendar &amp; Scheduling</h3>
+          <p><!-- Edit: describe the platform, cadence, and a result e.g. "Planned and scheduled 30 days of posts, growing engagement 40% in 6 weeks." --></p>
+          <a href="#" class="view">View sample →</a>
+        </div>
+      </div>
+
+      <div class="entry">
+        <div class="thumb"><img src="emailmarketing.png" alt="Email marketing sample"></div>
+        <div>
+          <div class="meta"><span class="idx">Entry 02</span><span class="tag">Email</span></div>
+          <h3>Campaign / Newsletter Build</h3>
+          <p><!-- Edit: describe the campaign, sequence, or newsletter and what it achieved (open rate, click rate, etc.) --></p>
+          <a href="#" class="view">View sample →</a>
+        </div>
+      </div>
+
+      <div class="entry">
+        <div class="thumb"><img src="graphicdesign.png" alt="Graphic design sample"></div>
+        <div>
+          <div class="meta"><span class="idx">Entry 03</span><span class="tag">Design</span></div>
+          <h3>Brand &amp; Social Assets</h3>
+          <p><!-- Edit: describe the design piece and who it was for --></p>
+          <a href="#" class="view">View sample →</a>
+        </div>
+      </div>
+
+      <div class="entry">
+        <div class="thumb"><img src="admintask.png" alt="Administrative task sample"></div>
+        <div>
+          <div class="meta"><span class="idx">Entry 04</span><span class="tag">Admin</span></div>
+          <h3>Data Entry</h3>
+          <p>Accurate, organized data entry into spreadsheets and CRMs — clean records, zero guesswork.</p>
+          <a href="August_Events_Schedule_2026.pdf" class="view">View sample →</a>
+        </div>
+      </div>
+
+      <div class="entry">
+        <div class="thumb"><img src="Calendar_Managment_WorkSample.png" alt="Calendar management sample"></div>
+        <div>
+          <div class="meta"><span class="idx">Entry 05</span><span class="tag">Admin</span></div>
+          <h3>Calendar Management</h3>
+          <p>Scheduling and calendar upkeep that avoids double-bookings and keeps your week on track.</p>
+          <a href="Calendar_Managment_WorkSample.png" class="view">View sample →</a>
+        </div>
+      </div>
+
+      <div class="entry">
+        <div class="thumb"><img src="Hearth_Botanicals_Inbox_Management.png" alt="Inbox management sample"></div>
+        <div>
+          <div class="meta"><span class="idx">Entry 06</span><span class="tag">Admin</span></div>
+          <h3>Inbox Management</h3>
+          <p>Sorted, prioritized, and responded to — inbox management that keeps nothing important slipping through.</p>
+          <a href="Hearth_Botanicals_Inbox_Management.png" class="view">View sample →</a>
+        </div>
+      </div>
+
+      <div class="entry">
+        <div class="thumb"><img src="Calendly_Consultation_Call_2026-08-01.png" alt="Meeting support sample"></div>
+        <div>
+          <div class="meta"><span class="idx">Entry 07</span><span class="tag">Admin</span></div>
+          <h3>Meeting Support</h3>
+          <p>Agendas, notes, and follow-ups handled — so meetings turn into action, not just talk.</p>
+          <a href="Calendly_Consultation_Call_2026-08-01.png" class="view">View sample →</a>
+        </div>
+      </div>
+
+      <div class="entry">
+        <div class="thumb" style="display:flex; align-items:center; justify-content:center;">
+          <span style="font-family:'Fraunces',serif; font-style:italic; color:var(--wine); font-size:0.85rem;">PDF</span>
+        </div>
+        <div>
+          <div class="meta"><span class="idx">Entry 08</span><span class="tag">Admin</span></div>
+          <h3>Travel Itinerary Project Sample</h3>
+          <p>Multi-city trip planning, budget tracking, and client communication (fictional client demo).</p>
+          <a href="Travel_Coordination_Work_Sample.pdf" class="view">View sample →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Process ===== -->
+<section id="process">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">How we'd work together</p>
+      <h2>Process</h2>
+    </div>
+    <div class="timeline">
+      <div class="step">
+        <span class="step-label">Step 01</span>
+        <h4>Discovery call</h4>
+        <p>We talk through what's taking up your time and where support would help most.</p>
+      </div>
+      <div class="step">
+        <span class="step-label">Step 02</span>
+        <h4>Scope &amp; proposal</h4>
+        <p>I send a clear breakdown of tasks, timeline, and pricing — no surprises.</p>
+      </div>
+      <div class="step">
+        <span class="step-label">Step 03</span>
+        <h4>Onboarding</h4>
+        <p>You share access to the tools I'll need, and I set up systems to track everything.</p>
+      </div>
+      <div class="step">
+        <span class="step-label">Step 04</span>
+        <h4>Ongoing reporting</h4>
+        <p>Regular, clear updates so you always know exactly what's been done.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Contact ===== -->
+<section id="contact" class="contact">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Let's talk</p>
+      <h2 style="color:#fff;">Contact</h2>
+      <p>Reach out and I'll get back to you within a business day.</p>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-card">
+        <span class="label">Email</span>
+        <a href="mailto:kenna.ymbl@gmail.com">kenna.ymbl@gmail.com</a>
+        <span class="label">LinkedIn</span>
+        <a href="https://linkedin.com/in/your-actual-slug"><!-- Edit: replace with your real LinkedIn URL -->linkedin.com/in/your-actual-slug</a>
+      </div>
+      <div class="contact-card">
+        <span class="label">Location</span>
+        <p>Siquijor, Philippines (GMT+8)</p>
+        <span class="label">Availability</span>
+        <p>Accepting new clients</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  © <span id="year"></span> Kenna Rose Ymbol. Built with care.
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+  const toggle = document.getElementById('navtoggle');
+  const links = document.getElementById('navlinks');
+  toggle.addEventListener('click', () => {
+    const open = links.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', open);
+  });
+  links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    links.classList.remove('open');
+    toggle.setAttribute('aria-expanded', 'false');
+  }));
+</script>
+
+</body>
+</html>
