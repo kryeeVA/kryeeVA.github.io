@@ -440,14 +440,34 @@
 
       <div class="entry">
          <div class="thumb"><img src="7.png" alt="Travel itinerary sample"></div>
-        <div class="thumb" style="display:flex; align-items:center; justify-content:center;">
-          <span style="font-family:'Fraunces',serif; font-style:italic; color:var(--wine); font-size:0.85rem;">PDF</span>
-        </div>
-        <div>
-          <div class="meta"><span class="idx">Entry 07</span><span class="tag">Admin</span></div>
-          <h3>Travel Itinerary Project Sample</h3>
-          <p>Multi-city trip planning, budget tracking, and client communication (fictional client demo).</p>
-          <a href="Travel_Coordination_Work_Sample.pdf" class="view">View sample →</a>
+        .gallery-entry{grid-template-columns:1fr; gap:16px;}
+.gallery-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill, minmax(140px, 1fr));
+  gap:8px;
+}
+.gallery-grid img{
+  width:100%;
+  aspect-ratio:4/3;
+  object-fit:cover;
+  background:var(--parchment);
+  border:1px solid var(--line);
+}
+          <div class="entry gallery-entry">
+  <div class="gallery-grid">
+    <img src="travel-itinerary-1.png" alt="Travel itinerary sample 1">
+    <img src="travel-itinerary-2.png" alt="Travel itinerary sample 2">
+    <img src="travel-itinerary-3.png" alt="Travel itinerary sample 3">
+    <img src="travel-itinerary-4.png" alt="Travel itinerary sample 4">
+    <img src="travel-itinerary-5.png" alt="Travel itinerary sample 5">
+    <img src="travel-itinerary-6.png" alt="Travel itinerary sample 6">
+  </div>
+  <div>
+    <div class="meta"><span class="idx">Entry 07</span><span class="tag">Admin</span></div>
+    <h3>Travel Itinerary Project Sample</h3>
+    <p>Multi-city trip planning, budget tracking, and client communication (fictional client demo).</p>
+  </div>
+</div>
         </div>
       </div>
     </div>
